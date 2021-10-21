@@ -1,0 +1,30 @@
+'use strict';
+// 存储合法的业务域名
+const whitelist = [
+  'zhaogong.testing2.ifchange.com',
+  'zhaogong.ifchange.com',
+  'www.testing2.ifchange.com',
+  'www.ifchange.com',
+  'www.testing2.chengdan.ai',
+  'www.chengdan.ai',
+  'iva.ifchange.com',
+  'iva.testing2.chengdan.ai',
+  'dev.tob.ifchange.com',
+  '_t_.tob.ifchange.com',
+  'operation.intranet.ifchange.com',
+  'greentown.testing2.ifchange.com',
+  'greentown.ifchange.com',
+  'dtr.testing2.ifchange.com',
+  'dtr.ifchange.com',
+  'talentreview.testing2.ifchange.com',
+  'talentreview.ifchange.com',
+  'seekers.testing2.cheng95.cn',
+  'seekers.cheng95.cn',
+  'zoomlion.testing2.ifchange.com',
+  'zoomlion.ifchange.com',
+  'gt.testing2.ifchange.com',
+  'gt.ifchange.com',
+  'iflytek2.testing2.ifchange.com',
+  'iflytek2.ifchange.com',
+];
+module.exports = whitelist;

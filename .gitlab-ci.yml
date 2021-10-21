@@ -1,0 +1,52 @@
+stages:
+  # - check    # 项目检测
+  - deploy   # 部署到开发环境，同步到 SVN
+
+# 项目规范检测:
+#   stage: check
+#   script:
+#     - psc --alias 内推 --notify
+#   only:  # 只检测除 master 之外的分支提交
+#     - branches
+#   except:
+#     - master
+
+部署release分支:
+  stage: deploy
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    paths:
+      - dist/
+      - app/view/
+    policy: pull
+  script:
+    - cid=`docker ps -a --filter='name=frontend_node-screenshot_running' -q`
+    - if [ ! -z $cid ];then
+    - docker rm -f  $cid
+    - fi
+    - docker build -t frontend/node-screenshot .
+
+    - DATE_STAMP=${CI_COMMIT_REF_NAME#*/}
+    - TAG_NAME=docker.ifchange.com/tob/frontend-node-screenshot:${DATE_STAMP}
+    - docker tag frontend/node-screenshot $TAG_NAME
+    - docker push $TAG_NAME
+    - echo "提测镜像地址"$TAG_NAME
+    - docker run -d -p 7399:7100 --name=frontend_node-screenshot_running frontend/node-screenshot
+    - echo "branch $CI_COMMIT_REF_NAME(${CI_COMMIT_SHA:0:7}) is running at http://192.168.1.97:7399/"
+  # environment:
+  #   name: development/release
+  #   url: http://192.168.1.97:7100
+  #when: manual
+  only:
+    - /^(release|hotfix)\/.+$/
+
+
+# # 自动创建 Tag
+# 创建Tag:
+#   stage: deploy
+#   variables:
+#     GIT_STRATEGY: none
+#   script:
+#     - autotag
+#   only:
+#     - master
