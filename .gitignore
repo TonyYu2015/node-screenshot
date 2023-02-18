@@ -14,7 +14,7 @@ tmp/
 Dockerfile
 .gitlab-ci.yml
 .travis.yml
-appveryor.ymal
+appveyor.yml
 .dockerignore
 start.sh
 product/
