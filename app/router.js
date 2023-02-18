@@ -9,7 +9,6 @@ module.exports = app => {
   router.get('/screenshot', controller.screenshot.index);
   router.get('/pdf', controller.screenshot.fakepdf);
   router.get('/download', controller.download.index);
-  router.get('/subscribe', controller.subscribe.index);
 
   router.get('/hlapi/*', ( ctx ) => {
     return ctx.response.redirect(`/${ctx.params[0]}${ctx.request.search}`);

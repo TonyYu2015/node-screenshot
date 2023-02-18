@@ -12,4 +12,10 @@ run/
 *.sw*
 *.un~
 tmp/
+Dockerfile
+.gitlan-ci.yml
+.travis.yml
+appveryor.ymal
+.dockerignore
+start.sh
 
