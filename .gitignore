@@ -1,5 +1,4 @@
 logs/
-product/
 npm-debug.log
 yarn-error.log
 node_modules/
@@ -13,9 +12,9 @@ run/
 *.un~
 tmp/
 Dockerfile
-.gitlan-ci.yml
+.gitlab-ci.yml
 .travis.yml
 appveryor.ymal
 .dockerignore
 start.sh
-fonts/
+product/
